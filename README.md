@@ -1,4 +1,4 @@
 portal
 ======
 
-simple protal with Django
+simple portal with Django
