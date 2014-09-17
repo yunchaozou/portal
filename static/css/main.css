@@ -1,0 +1,35 @@
+/* partner CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.partner .col-lg-2 {
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  border-color: #e6e6e6 #e6e6e6 #b3b3b3;
+  line-height: 1.42857;
+}
+
+.partner .row {
+	margin-top: -10px;
+}
+
+
+/*  main content   
+--------------------------------------------------*/
+.main .row{
+	min-height:300px;
+}
+
+
+/*  sub page  
+--------------------------------------------------*/
+.info_center {
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  border-color: #e6e6e6 #e6e6e6 #b3b3b3;
+  line-height: 1.42857;
+}

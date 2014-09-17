@@ -1,0 +1,82 @@
+ {% extends "base.html" %} {% block script %} {% endblock %} 
+ {% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 col-sm-2" style="top: 10px; left: 30px">
+			<h4>您当前所在位置:</h4>
+		</div>
+		<div class="col-xs-10 col-sm-10" style="top: 10px">
+			<ul class="breadcrumb">
+				{% if story.category.label == "Site Recruitment" %}
+				<li class="active">诚聘英才</li>
+				{% else %}
+					<li><a href="#">资讯中心</a></li>
+					<li class="active">公告与动态</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-md-3 col-sm-3 sidebar-offcanvas" id="sidebar"
+			role="navigation">
+			<div class="list-group">
+				<a href="#" class="list-group-item active">资讯中心</a> <a href="#"
+					class="list-group-item"><span class="glyphicon glyphicon-play">
+						公告与动态 </span></a> <a href="#" class="list-group-item"><span
+					class="glyphicon glyphicon-play"> 媒体中心</span> </a> <a href="#"
+					class="list-group-item"><span class="glyphicon glyphicon-play">
+						研究与刊物</span></a>
+			</div>
+		</div>
+		<!--/span-->
+		<!--/span-->
+
+		<div class="col-md-9 col-sm-9">
+			<div class="row" style="min-height: 120px">
+
+				<img class="img-rounded" height="120px" width="100%"
+					src="/static/images/article_006 - copy.png" />
+
+			</div>
+			<div class="row">
+				<div class="col-12 col-sm-12 col-lg-12">
+					<h2> 目录:
+						<a
+							href="{% url 'jsclearing.notice.views.category' story.category.slug %}">
+							{% if story.category.label == "Site Notice" %}
+							  通知公告
+							  {% elif story.category.label == "Site News"  %}
+							  	公司动态
+							  		{% elif story.category.label == "Site Trends"  %}
+							  			业界动态
+							  			{% elif story.category.label == "Site Media"  %}
+							  				媒体报道
+							  					{% elif story.category.label == "Site Recruitment"  %}
+							  							诚聘英才
+							  						{% else %}
+							  						其他							  			
+							{% endif %}
+						</a>
+					</h2>
+					<h1>{{ story.title }}</h1>
+					<hr />
+					<div id="story-body">
+						<p>
+						{{ story.html_content|safe }}
+						</p>
+						<p class="small">最后更新： {{ story.modified|date:"Y-m-d H:i:s" }}</p>
+					</div>
+				</div>
+			</div>
+			<!--/row-->
+		</div>
+		<!--/span-->
+
+
+	</div>
+	<!--/row-->
+</div>
+<!--/.container-->
+{% endblock %}
+

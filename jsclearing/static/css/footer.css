@@ -1,0 +1,39 @@
+div.footer-links {
+    background-color: #273f56;
+    font-family: Microsoft Yahei;
+}
+div.footer-links h3 {
+    color: #b0b8bd;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 0;
+}
+
+
+div.footer-links ul.links-item-url {
+    list-style-type: none;
+    margin: 0;
+    max-width: 150px;
+    word-break: break-all;
+}
+div.footer-links  ul.links-item-url li a,address {
+    color: #3499be;
+    font-size: 13px;
+    text-decoration: none;
+}
+div.footer-links ul.links-item-url li a:hover {
+    text-decoration: underline;
+}
+div.copyright {
+  min-height:40px;
+  background-color:#375069;
+}
+div.copyright>.row {
+#  margin:-10px 0 0;
+  padding:10px 0 0;
+}
+div.copyright p {
+  font-size:12px;
+  color:#b0b8bd;
+}

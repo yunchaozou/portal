@@ -1,0 +1,42 @@
+ {% extends "base.html" %} {% block script %} {% endblock %} 
+ {% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 col-sm-2" style="bottom: 5px; left: 20px">
+			<h3>
+				<span class="label label-info">您当前所在位置:</span>
+			</h3>
+		</div>
+		<div class="col-xs-10 col-sm-10" style="top: 10px">
+		{% block breadcrumb %}{% endblock %}
+		</div>
+	</div>
+	<div class="row">
+
+	      <div class="col-md-3 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+	      {% block list-group %}{% endblock %}
+        </div><!--/span-->
+		<!--/span-->
+
+		<div class="col-md-9 col-sm-9">
+		<div class="row" style="min-height:120px ">
+		
+		<img height="120px" width="100%" src="/static/images/article_006 - copy.png"/>
+	
+		</div>
+			<div class="row">
+				<div class="col-12 col-sm-12 col-lg-12">
+				 {% block concrete-content %}{% endblock %}
+				</div>
+			</div>
+			<!--/row-->
+		</div>
+		<!--/span-->
+
+
+	</div>
+	<!--/row-->
+</div>
+<!--/.container-->
+{% endblock %}
+

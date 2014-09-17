@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block script %} {% endblock %}
+ {% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 col-sm-2" style="top: 10px; left: 30px">
+			<h4>您当前所在位置:</h4>
+		</div>
+		<div class="col-xs-10 col-sm-10" style="top: 10px">
+			<ul class="breadcrumb">
+				<li class="active">诚聘英才</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-md-12 col-sm-12">
+			<div class="row" style="min-height: 120px">
+
+				<img class="img-rounded" height="120px" width="100%"
+					src="/static/images/article_006 - copy.png" />
+
+			</div>
+			<div class="row"  style="min-height:400px">
+				<div class="col-12 col-sm-12 col-lg-12">
+					<h1>招聘信息</h1> 
+					<hr />
+					<ul id="story-list">
+						{% for story in story_list %}
+						<li><a href="{{ story.get_absolute_url }}">
+						 {{ story.title }}</a></li> {% endfor %}
+					</ul>
+				</div>
+			</div>
+			<!--/row-->
+			<div class="row">
+				<div class="col-lg-2" style="margin-right:-40px;top:5px">
+					{% if story_list.has_previous %} <a
+						href="?page={{ story_list.previous_page_number }}">上一页</a> 
+						{% endif %}
+			     </div>
+				<div class="col-lg-4" style="margin-right:-60px">
+					<form  class="form-search" action="{% url 'jsclearing.notice.views.category' category.slug %}" method="get">{% csrf_token %} 
+						<div class="row">
+						<div class="col-lg-4" style="margin:5px -20px">
+						 <input  class="input-medium search-query" name="page" type="text" size="1" value="{{ story_list.number }}"/>
+						</div>
+						<div class="col-lg-4" style="margin-right:-40px; top:8px">
+							<p>/    {{ story_list.paginator.num_pages }} </p>
+							</div>
+						<div class="col-lg-4">
+						 <button type="submit" class="btn">跳转</button>
+						 </div>
+						 </div>			 
+					</form>
+				</div>
+				<div class="col-lg-2" style="margin-left:-20px;top:5px">
+					{% if story_list.has_next %} <a
+						href="?page={{ story_list.next_page_number }}">下一页</a> {% endif %}
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+
+
+	</div>
+	<!--/row-->
+</div>
+<!--/.container-->
+{% endblock %}
+

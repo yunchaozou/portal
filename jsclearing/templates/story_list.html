@@ -1,0 +1,118 @@
+{% extends "base.html" %} {% block script %} {% endblock %}
+ {% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 col-sm-2" style="top: 10px; left: 30px">
+			<h4>您当前所在位置:</h4>
+		</div>
+		<div class="col-xs-10 col-sm-10" style="top: 10px">
+			<ul class="breadcrumb">
+				{% if heading.category.label == "Site Recruitment" %}
+				<li class="active">诚聘英才</li>
+				{% else %}
+				<li><a href="#">资讯中心</a></li>
+				<li><a href="#">公告与动态</a></li>
+				<li class="active">
+				{% if heading %}
+					{% if heading.category.label == "Site Notice" %}
+						通知公告
+							  {% elif heading.category.label == "Site News"  %}
+							  	公司动态
+							  		{% elif heading.category.label == "Site Trends"  %}
+							  			业界动态
+							  			{% elif heading.category.label == "Site Media"  %}
+							  				媒体报道
+							  				{% else %}
+							  				其他							  			
+					{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-md-3 col-sm-3 sidebar-offcanvas" id="sidebar"
+			role="navigation">
+			<div class="list-group">
+				<a href="#" class="list-group-item active">资讯中心</a> <a href="#"
+					class="list-group-item"><span class="glyphicon glyphicon-play">
+						公告与动态 </span></a> <a href="#" class="list-group-item"><span
+					class="glyphicon glyphicon-play"> 媒体中心</span> </a> <a href="#"
+					class="list-group-item"><span class="glyphicon glyphicon-play">
+						研究与刊物</span></a>
+			</div>
+		</div>
+		<!--/span-->
+		<!--/span-->
+
+		<div class="col-md-9 col-sm-9">
+			<div class="row" style="min-height: 120px">
+
+				<img class="img-rounded" height="120px" width="100%"
+					src="/static/images/article_006 - copy.png" />
+
+			</div>
+			<div class="row"  style="min-height:400px">
+				<div class="col-12 col-sm-12 col-lg-12">
+					{% if heading %}
+					<h1> 
+					{% if heading.category.label == "Site Notice" %}
+						通知公告
+							  {% elif heading.category.label == "Site News"  %}
+							  	公司动态
+							  		{% elif heading.category.label == "Site Trends"  %}
+							  			业界动态
+							  			{% elif heading.category.label == "Site Media"  %}
+							  			媒体报道
+							  				{% else %}
+							  				其他							  			
+					{% endif %}
+					</h1> 
+					{% endif %}
+					<hr />
+					<ul id="story-list">
+						{% for story in story_list %}
+						<li><a href="{{ story.get_absolute_url }}">
+						 {{ story.title }}</a></li> {% endfor %}
+					</ul>
+				</div>
+			</div>
+			<!--/row-->
+			<div class="row">
+				<div class="col-lg-2" style="margin-right:-40px;top:5px">
+					{% if story_list.has_previous %} <a
+						href="?page={{ story_list.previous_page_number }}">上一页</a> 
+						{% endif %}
+			     </div>
+				<div class="col-lg-4" style="margin-right:-60px">
+					<form  class="form-search" action="{% url 'jsclearing.notice.views.category' category.slug %}" method="get">{% csrf_token %} 
+						<div class="row">
+						<div class="col-lg-4" style="margin:5px -20px">
+						 <input  class="input-medium search-query" name="page" type="text" size="1" value="{{ story_list.number }}"/>
+						</div>
+						<div class="col-lg-4" style="margin-right:-40px; top:8px">
+							<p>/    {{ story_list.paginator.num_pages }} </p>
+							</div>
+						<div class="col-lg-4">
+						 <button type="submit" class="btn">跳转</button>
+						 </div>
+						 </div>			 
+					</form>
+				</div>
+				<div class="col-lg-2" style="margin-left:-20px;top:5px">
+					{% if story_list.has_next %} <a
+						href="?page={{ story_list.next_page_number }}">下一页</a> {% endif %}
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+
+
+	</div>
+	<!--/row-->
+</div>
+<!--/.container-->
+{% endblock %}
+
